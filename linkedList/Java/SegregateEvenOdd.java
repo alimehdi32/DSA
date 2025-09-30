@@ -26,13 +26,14 @@ public class SegregateEvenOdd {
         while( temp != null && temp.next != null ){
             list.add(temp.data);
             temp = temp.next.next;
-        }
+        } 
+        if( temp != null ) list.add(temp.data);
         temp = head.next;
 
         while( temp != null && temp.next != null ){
             list.add(temp.data);
             temp = temp.next.next;
-        }
+        } if( temp != null ) list.add(temp.data);
 
         int i=0;
         temp = head;
