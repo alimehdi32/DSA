@@ -1,4 +1,4 @@
-package linkedList.Java;
+import java.util.*;
 
 public class listaddition {
     public static class ListNode {
@@ -8,6 +8,7 @@ public class listaddition {
       ListNode(int val) { this.val = val; }
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
   }
+  ListNode head=null;
 
   public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode prev = l1;
@@ -55,7 +56,7 @@ public class listaddition {
         return head;
     }
 
-    void addElement(ListNode head, int data){
+    void addElement(int data){
             ListNode newNode = new ListNode(data);
 
             if(head == null){
@@ -79,16 +80,49 @@ public class listaddition {
             System.out.print("null");
         }
 
+        public int getDecimalValue() {
+        ListNode temp = head;
+        long binary = 0;
+        long multiply = 1;
+        int power = 1;
+
+        while( temp != null ){
+            binary = temp.val * multiply + binary;
+            System.out.println("Binary: " + binary);
+            System.out.println("Multiply: " + multiply);
+            System.out.println("Power: " + power);
+            multiply*= 10;
+            power*= 2;
+            temp = temp.next;
+        }
+        power/= 2;
+        int sum = 0;
+        while( binary != 0){
+            long digit = binary % 10;
+            sum = sum + (int) digit * power;
+            power/= 2;
+            binary/= 10;
+        }
+
+        return sum;
+    }
+
         public static void main(String args[]){
             listaddition list = new listaddition();
             
-            ListNode head1 = new ListNode(2);
-            list.addElement(head1, 4);
-            list.addElement(head1, 3);
-            ListNode head2 = new ListNode(5);
-            list.addElement(head2, 6);
-            list.addElement(head2, 4);
-            ListNode head3 = list.addTwoNumbers(head1, head2);
-            list.display(head3);
+           list.addElement(1);
+           list.addElement(1);
+           list.addElement(1);
+           list.addElement(1);
+           list.addElement(0);
+           list.addElement(1);
+           list.addElement(0);
+           list.addElement(0);
+           list.addElement(0);
+           list.addElement(0);
+           list.addElement(1);
+          
+           list.display(list.head);
+           System.out.println(list.getDecimalValue());
         }
 }
